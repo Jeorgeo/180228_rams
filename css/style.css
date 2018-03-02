@@ -18,17 +18,17 @@
 
 @font-face {
   font-family: 'OpenSans'; /* Гарнитура шрифта */
-  src: url( "fonts/OpenSans-Regular.ttf" ); /* Путь к файлу со шрифтом */
+  src: url( "../fonts/OpenSansRegular.ttf" ); /* Путь к файлу со шрифтом */
 }
 
 @font-face {
-   font-family: 'OpenSansExtraBold'; /* Гарнитура шрифта */
-   src: url( "fonts/OpenSans-ExtraBold.ttf" ); /* Путь к файлу со шрифтом */
+   font-family: 'OpenSansBold'; /* Гарнитура шрифта */
+   src: url( "../fonts/OpenSansBold.ttf" ); /* Путь к файлу со шрифтом */
   }
 
 @font-face {
-   font-family: 'OpenSansSemibold'; /* Гарнитура шрифта */
-   src: url( "fonts/OpenSans-Semibold.ttf" ); /* Путь к файлу со шрифтом */
+   font-family: 'OpenSansLight'; /* Гарнитура шрифта */
+   src: url( "../fonts/OpenSansLight.ttf" ); /* Путь к файлу со шрифтом */
   }
 
 
@@ -75,11 +75,20 @@ html, body {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 	width: 100%;
-	height: 100%;
 	min-width: 100%;
 	min-height: 100%;
 	font-family: 'OpenSans', sans-serif;
-  color: #404040;
+  color: #000000;
+}
+
+html {
+  background: #eefff0;
+}
+
+body {
+  padding: 170px 0 150px 0;
+  background: url('../img/bg_top.png') no-repeat 0 0,
+              url('../img/bg_bottom.png') no-repeat 0 100%;
 }
 
 h1,
@@ -89,13 +98,7 @@ h4,
 h5,
 h6 {
 	font-size: 1em;
-  font-family: 'OpenSansSemibold', serif;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  font-family: 'OpenSansBold', serif;
 }
 
 a {
@@ -111,8 +114,9 @@ img {
 
 .container {
   max-width: 300px;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
+  background-color: #ffffff;
 }
 
 .clearfix::after {
@@ -121,50 +125,45 @@ img {
   clear: both;
 }
 
-.cols {
-  margin: 1em auto;
-  box-sizing: border-box;
-}
-
-.cols.col-1,
-.cols.col-2,
-.cols.col-3,
-.cols.col-4,
-.cols.col-5,
-.cols.col-6,
-.cols.col-7,
-.cols.col-8,
-.cols.col-9,
-.cols.col-10,
-.cols.col-11,
-.cols.col-12 {
-  width: 100%;
-}
-
 .color-text {
   color: #e93a1d;
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 750px;
-  }
-
-  .cols {
-    float: left;
-    margin: 1em 0;
-  }
-
-  .cols.col-6-md {
-    width: 50%;
-  }
-
-}
-
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header .header-menu ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+header .header-menu ul>li {
+  padding: 0.5em;
+  border-bottom: 1px solid #ebebeb;
+  text-align: center;
+}
+
+header .header-menu ul>li a {
+  color: #5b884e;
+  font-family: 'OpenSans', 'Arial', sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  opacity: 0.35;
+}
+
+header .header-menu ul>li:hover a {
+  opacity: 1;
+}
+
 
 /*--------------------------------------------------------------
 # Content
@@ -181,6 +180,10 @@ img {
   /*--------------------------------------------------------------
   # Typography
   --------------------------------------------------------------*/
+
+  .container {
+    max-width: 750px;
+  }
 
   /*--------------------------------------------------------------
   # Header
@@ -204,60 +207,43 @@ img {
   --------------------------------------------------------------*/
 
   .container {
-    max-width: 960px;
-  }
-
-  .cols.col-1 {
-    width: 8.3333%;
-  }
-
-  .cols.col-2 {
-    width: 16.6666%;
-  }
-
-  .cols.col-3 {
-    width: 24.9999%;
-  }
-
-  .cols.col-4 {
-    width: 33.3332%;
-  }
-
-  .cols.col-5 {
-    width: 41.6665%;
-  }
-
-  .cols.col-6 {
-    width: 49.9998%;
-  }
-
-  .cols.col-7 {
-    width: 58.3331%;
-  }
-
-  .cols.col-8 {
-    width: 66.6664%;
-  }
-
-  .cols.col-9 {
-    width: 74.9997%;
-  }
-
-  .cols.col-10 {
-    width: 83.333%;
-  }
-
-  .cols.col-11 {
-    width: 91.663%;
-  }
-
-  .cols.col-12 {
-    width: 100%;
+    max-width: 1032px;
   }
 
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
+
+  header {
+    flex-direction: row;
+    justify-content: center;
+    padding: 16px 27px;
+  }
+
+  .logo-box {
+    margin: 0;
+    margin-right: 1em;
+  }
+
+  header .header-menu ul {
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
+  header .header-menu ul>li {
+    padding: 0 18px 2px 18px;
+    border-bottom: none;
+    border-right: 1px solid #ebebeb;
+    text-align: center;
+  }
+
+  header .header-menu ul>li:last-child {
+    padding-right: 0;
+    border-right: none;
+  }
+
+
 
   /*--------------------------------------------------------------
   # Content
