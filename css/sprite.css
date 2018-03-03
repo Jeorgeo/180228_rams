@@ -1,0 +1,137 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-icon_01 {
+    width: 27px;
+    height: 17px;
+    background-position: -10px -10px;
+}
+
+.sprite-icon_01-1 {
+    width: 27px;
+    height: 17px;
+    background-position: -57px -10px;
+}
+
+.sprite-icon_02 {
+    width: 20px;
+    height: 20px;
+    background-position: -104px -10px;
+}
+
+.sprite-icon_02-1 {
+    width: 20px;
+    height: 20px;
+    background-position: -144px -10px;
+}
+
+.sprite-icon_03 {
+    width: 20px;
+    height: 16px;
+    background-position: -10px -50px;
+}
+
+.sprite-icon_03-1 {
+    width: 20px;
+    height: 16px;
+    background-position: -50px -50px;
+}
+
+.sprite-icon_04 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -50px;
+}
+
+.sprite-icon_04-1 {
+    width: 20px;
+    height: 20px;
+    background-position: -130px -50px;
+}
+
+.sprite-icon_05 {
+    width: 20px;
+    height: 23px;
+    background-position: -10px -90px;
+}
+
+.sprite-icon_05-1 {
+    width: 20px;
+    height: 23px;
+    background-position: -50px -90px;
+}
+
+.sprite-icon_06 {
+    width: 15px;
+    height: 20px;
+    background-position: -90px -90px;
+}
+
+.sprite-icon_06-1 {
+    width: 15px;
+    height: 20px;
+    background-position: -125px -90px;
+}
+
+.sprite-icon_07 {
+    width: 20px;
+    height: 21px;
+    background-position: -160px -90px;
+}
+
+.sprite-icon_07-1 {
+    width: 20px;
+    height: 21px;
+    background-position: -90px -131px;
+}
+
+.sprite-icon_08 {
+    width: 23px;
+    height: 22px;
+    background-position: -130px -131px;
+}
+
+.sprite-icon_arrow {
+    width: 27px;
+    height: 16px;
+    background-position: -184px -10px;
+}
+
+.sprite-icon_blog {
+    width: 19px;
+    height: 23px;
+    background-position: -184px -46px;
+}
+
+.sprite-icon_forum {
+    width: 28px;
+    height: 19px;
+    background-position: -173px -131px;
+}
+
+.sprite-icon_gallery {
+    width: 23px;
+    height: 19px;
+    background-position: -200px -89px;
+}
+
+.sprite-icon_news {
+    width: 20px;
+    height: 20px;
+    background-position: -10px -170px;
+}
+
+.sprite-icon_search {
+    width: 18px;
+    height: 18px;
+    background-position: -50px -170px;
+}
+
+.sprite-icon_watch {
+    width: 21px;
+    height: 21px;
+    background-position: -173px -170px;
+}
