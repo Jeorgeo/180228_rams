@@ -105,14 +105,32 @@ add_action( 'after_setup_theme', 'mycavy_ru_content_width', 0 );
  */
 function mycavy_ru_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'mycavy_ru' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Меню в сайдбаре', 'mycavy_ru' ),
+		'id'            => 'sidebar-menu',
 		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Виджет facebook', 'mycavy_ru' ),
+		'id'            => 'f_wiget',
+		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
+		'before_widget' => '<figure>',
+		'after_widget'  => '</figure>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Виджет vk', 'mycavy_ru' ),
+		'id'            => 'vk_wiget',
+		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
+		'before_widget' => '<figure>',
+		'after_widget'  => '</figure>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );	
 }
 add_action( 'widgets_init', 'mycavy_ru_widgets_init' );
 
@@ -161,6 +179,11 @@ require get_template_directory() . '/tgm/tgm-files.php';
  * Require ads.
  */
 require get_template_directory() . '/inc/ads.php';
+
+/**
+ * Require news.
+ */
+require get_template_directory() . '/inc/news.php';
 
 /**
  * Load Jetpack compatibility file.
