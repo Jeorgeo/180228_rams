@@ -57,7 +57,6 @@ $news	= get_posts(
         <div class="news-box archiv-box">
           <?php
 
-          $news_count = 0;
           foreach ($news as $obj) {
               if($obj->post_name == 'archive'){
                   continue;

@@ -23,12 +23,15 @@
 	<div class="container">
 		<div class="wrapper-container shadow-container">
 			<header>
-				<figure class="logo-box">
+				<figure class="logo-box box-menu-toggle">
 					<a href="<?php echo get_home_url(); ?>">
 						<img src="<?php bloginfo('template_url'); ?>/img/logo-1.png " alt="Российская Ассоциация заводчиков и любителей морских свинок">
 					</a>
+					<div id="js-toggle" class="left-panel__menu-toggle">
+						<button class="header-menu-toggle"><span>menu</span></button>
+					</div>
 				</figure>
-				<nav class="header-menu">
+				<nav class="header-menu left-panel">
 					<?php
 						wp_nav_menu( array(
 							'theme_location' => 'menu-1',

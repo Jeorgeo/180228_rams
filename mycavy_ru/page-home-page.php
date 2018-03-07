@@ -53,19 +53,32 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/slick/slick.css">
 
 	<?php wp_head(); ?>
 </head>
 <body>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=217769112113558&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="container">
 		<div class="wrapper-container shadow-container">
-			<header>
-				<figure class="logo-box">
+      <header>
+				<figure class="logo-box box-menu-toggle">
 					<a href="<?php echo get_home_url(); ?>">
 						<img src="<?php bloginfo('template_url'); ?>/img/logo-1.png " alt="Российская Ассоциация заводчиков и любителей морских свинок">
 					</a>
+					<div id="js-toggle" class="left-panel__menu-toggle">
+						<button class="header-menu-toggle"><span>menu</span></button>
+					</div>
 				</figure>
-				<nav class="header-menu">
+				<nav class="header-menu left-panel">
 					<?php
 						wp_nav_menu( array(
 							'theme_location' => 'menu-1',
@@ -83,8 +96,6 @@
 						<h1>
 							<?php echo get_field( 'main-title' ); ?>
 						</h1>
-              <?php the_post(); ?>
-            	<?php the_content(); ?>
 					</div>
 					<div class="right-side">
 						<form class="main-search" action="<?php bloginfo( 'url' ); ?>" method="get">
@@ -93,6 +104,12 @@
 							<input id="submit" class="search-btn" type="submit" value="Найти"/>
 						</label>
 						</form>
+					</div>
+          <div class="left-side">
+              <?php the_post(); ?>
+            	<?php the_content(); ?>
+					</div>
+          <div class="right-side">
 						<figure>
 							<img src="<?php echo get_field( 'main-img' ); ?>" alt="РАМС - крупнейший русскоязычный ресурс">
               <a href="<?php echo get_home_url(); ?>">
@@ -110,7 +127,7 @@
 				<aside class="main-wigets">
 					<div class="ads_wiget">
 						<h3 class="block-title ads">
-							Доска объявлений
+							Купить морскую свинку
 						</h3>
 
             <?php
@@ -144,18 +161,11 @@
               };
              ?>
 
-						<a href="#" class="ads_wiget-btn">ВСЕ ОБЪЯВЛЕНИЯ</a>
+						<?php dynamic_sidebar( 'ads_wiget-btn' ); ?>
 					</div>
-					<div class="facebook_wiget">
-						<figure>
-							<img src="<?php bloginfo('template_url'); ?>/img/f_wiget.jpg" alt="">
-						</figure>
-					</div>
-					<div class="vk_wiget">
-						<figure>
-							<img src="<?php bloginfo('template_url'); ?>/img/vk_wiget.jpg" alt="">
-						</figure>
-					</div>
+
+        		<?php dynamic_sidebar( 'f_wiget' ); ?>
+        		<?php dynamic_sidebar( 'vk_wiget' ); ?>
 				</aside>
 				<div class="right-container">
 					<div class="main-columns">
@@ -173,7 +183,7 @@
 						</div>
 						<div class="main-columns__column column-3">
 							<h4>
-								Морские свинки в природе
+								Морские свинки<br> в природе
 							</h4>
 							<?php echo get_field( 'main-cont-3' ); ?>
 						</div>
@@ -206,17 +216,15 @@
 							</a>
 						</div>
 						<div class="news-box">
-							<div class="arrows arrow-prev"></div>
+
+
               <?php
 
-              $news_count = 0;
               foreach ($news as $obj) {
                   if($obj->post_name == 'archive'){
                       continue;
                   }
-                  if ($news_count > 2 ) {
-                    break;
-                  }
+
               ?>
 
 							<a class="new-box" href="<?php echo $obj->post_name; ?>"  target="_blank">
@@ -229,11 +237,10 @@
 							</a>
 
               <?php
-                $news_count++;
                 };
                ?>
 
-							<div class="arrows arrow-next"></div>
+
 						</div>
 					</div>
 				</div>
@@ -286,6 +293,9 @@
 				</div>
 			</section>
 		</main>
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-3.2.0.min.js"></script>
+  	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-migrate-1.4.1.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/slick/slick.min.js"></script>
 
 <?php
 get_footer();

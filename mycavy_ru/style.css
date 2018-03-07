@@ -516,13 +516,17 @@ template {
 --------------------------------------------------------------*/
 
 @keyframes show-panel {
-  from { left: -235px; }
-  to   { left: 0; }
+  from { top: -310px;
+         opacity: 0;}
+  to   { top: 135px;
+         opacity: 1; }
 }
 
 @keyframes hidden-panel {
-  from { left: 0; }
-  to   { left: -235px; }
+  from { top: 135px;
+         opacity: 1; }
+  to   { top: -310px;
+         opacity: 0; }
 }
 
 @keyframes rotate-up {
@@ -544,7 +548,6 @@ template {
   from { transform: rotate(45deg); }
   to   { transform: rotate(0deg); }
 }
-
 
 /*--------------------------------------------------------------
 # Typography
@@ -659,6 +662,144 @@ header .header-menu ul>li:hover a {
   text-shadow: 1px 1px #446f35;
 }
 
+/*--------------------------------------------------------------
+# Header
+  ## Header mobile menu
+--------------------------------------------------------------*/
+
+.box-menu-toggle,
+header {
+  position: relative;
+}
+
+.left-panel {
+  position: absolute;
+  left: 0;
+  z-index: 998;
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+  animation-name:hidden-panel;
+  animation-duration: 0.8s;
+  top: -330px;
+  opacity: 0;
+  box-sizing: border-box;
+  box-shadow: 0 1px 10px -3px #446f35;
+}
+
+.left-panel.left-panel-show {
+  animation-name:show-panel;
+  animation-duration: 0.8s;
+  top: 135px;
+  opacity: 1;
+}
+
+.left-panel__menu-toggle {
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 3px;
+  font-size: 0;
+}
+
+.header-menu-toggle {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  background-color: transparent;
+  border: 1px solid #446f35;
+  outline: none;
+}
+
+.header-menu-toggle span {
+  position: absolute;
+  display: block;
+  width: 24px;
+  top: 14px;
+  left: 2px;
+  height: 2px;
+  font-size: 0;
+  animation-name: show-span;
+  animation-duration: 0.8s;
+  background-color: #446f35;
+}
+
+.header-menu-toggle span::before,
+.header-menu-toggle span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #446f35;
+  content: "";
+}
+
+.header-menu-toggle span::before {
+  transform: rotate(-45deg);
+  animation-name: prerotate-up;
+  animation-duration: 0.8s;
+  transform: rotate(0deg);
+  top: -6px;
+}
+
+.header-menu-toggle span::after {
+  transform: rotate(45deg);
+  animation-name: prerotate-bottom;
+  animation-duration: 0.8s;
+  transform: rotate(0deg);
+  bottom: -6px;
+}
+
+.nav-show {
+  display: block;
+  animation-name: show-panel;
+  animation-duration: 0.5s;
+  left: 0;
+}
+
+.header-menu-toggle.btn-arrow-top span::before  {
+  animation-name: rotate-up;
+  animation-duration: 0.8s;
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.header-menu-toggle.btn-arrow-bottom span::after {
+  animation-name: rotate-bottom;
+  animation-duration: 0.8s;
+  transform: rotate(45deg);
+  bottom: 0;
+}
+
+.header-menu-toggle.btn-arrow-bottom span {
+  animation-name: hide-span;
+  animation-duration: 0.8s;
+  background-color: transparent;
+}
+
+.mobile-menu li {
+  margin: 2em 0.5em;
+}
+
+@media screen and (min-width: 1024px) {
+  .left-panel__menu-toggle {
+    display: none;
+  }
+
+  .left-panel {
+    position: static;
+    opacity: 1;
+    box-shadow: none;
+  }
+}
 
 /*--------------------------------------------------------------
 # Content
@@ -691,7 +832,7 @@ section {
   padding-left: 68px;
   line-height: 19px;
   font-family: 'OpenSansLight', 'Arial', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background-color: #fdfdfd;
   border:1px solid #f2f2f2;
   box-sizing: border-box;
@@ -804,6 +945,10 @@ section {
 }
 
 .main-content h1 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   font-size: 1.2em;
   color: #446f35;
 }
@@ -814,15 +959,22 @@ section {
   color: #646464;
 }
 
-.main-content .color-text {
+.main-content a .color-text {
   display: block;
   margin-top: 0.5em;
-  color: #59a043;
   text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #59a043;
+}
+
+.main-content a:hover .color-text {
+  text-shadow: 1px 1px #446f35;
 }
 
 .main-search {
   position: relative;
+  width: 240px;
 }
 
 .main-search input {
@@ -892,13 +1044,29 @@ section {
   font-size: 0.8em;
 }
 
-.ads_wiget p {
+.ads_wiget__box p {
   margin: 0.1em;
 }
 
-.ads_wiget .ads_wiget__box img {
+.ads_wiget .ads_wiget__box img,
+.all-side.all-ads .ads_wiget__box img {
   float: left;
   margin-right: 1em;
+}
+
+.all-side.all-ads {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.ads-card {
+  width: 280px;
+  margin: 1.5em 0;
+  padding: 1.5em;
+  border: 1px solid #eefff0;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .ads_wiget p.ads_wiget-date {
@@ -924,6 +1092,10 @@ section {
   box-sizing: border-box;
 }
 
+.ads_wiget-btn p {
+  margin: 0.5em auto;
+}
+
 .ads_wiget-btn:hover {
   background-color: #446f35;
 }
@@ -933,10 +1105,11 @@ section {
 }
 
 .main-columns__column h4 {
-  margin: 1em 0;
-  color: #64a74d;
+  margin: 1.5em auto;
+  text-align: center;
   font-family: 'OpenSans', 'Arial', sans-serif;
   font-weight: lighter;
+  color: #64a74d;
 }
 
 .main-columns__column ul {
@@ -944,9 +1117,13 @@ section {
 }
 
 .main-columns__column li {
-  margin: 0.5em 0;
+  margin: 1px 0;
   color: #535353;
   font-size: 13px;
+}
+
+.main-columns__column li a {
+  line-height: 22px;
 }
 
 .main-columns__column li>a:hover {
@@ -1013,29 +1190,33 @@ section {
   position: relative;
 }
 
-.news-box .arrows {
+.news-box .slick-arrow {
   position: absolute;
   top: 50%;
   display: block;
   width: 16px;
   height: 40px;
+  border: none;
+  outline: none;
+  font-size: 0;
+  background-color: transparent;
 }
 
-.news-box .arrows:hover {
+.news-box .slick-arrow:hover {
   cursor: pointer;
 }
 
-.news-box .arrows.arrow-prev {
+.news-box .slick-arrow.slick-prev {
   left: 10px;
   transform: rotate(180deg);
 }
 
-.news-box .arrows.arrow-next {
+.news-box .slick-arrow.slick-next {
   right: 10px;
 }
 
-.news-box .arrows::after,
-.news-box .arrows::before {
+.news-box .slick-arrow::after,
+.news-box .slick-arrow::before {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1046,7 +1227,7 @@ section {
   content: '';
 }
 
-.news-box .arrows::before {
+.news-box .slick-arrow::before {
   top: 0;
   transform: rotate(-20deg);
 }
@@ -1293,6 +1474,11 @@ footer .footer-copy a {
   background-color: #446f35;
 }
 
+.slick-track {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1334,7 +1520,7 @@ footer .footer-copy a {
   }
 
   .main-block-2 .right-container {
-    width: 80%;
+    width: 61%;
     max-width: 752px;
     margin-left: 1em;
     margin-top: 1em;
@@ -1354,9 +1540,27 @@ footer .footer-copy a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     width: 73%;
-    max-width: 752px;
+    max-width: 750px;
+    justify-content: space-between;
+  }
+
+  .heading .main-content {
+    padding-left: 1.5em;
+  }
+
+  .heading .main-content h1,
+  .ads-block .main-content h1 {
+    text-align: left;
+  }
+
+  .ads-block .left-side,
+  .ads-block .right-side {
+    margin: auto;
+  }
+
+  .heading .main-content .all-side {
+    width: 100%;
   }
 
   .main-content figure {
@@ -1378,9 +1582,9 @@ footer .footer-copy a {
     padding-top: 0;
   }
 
-
-
-
+  .main-content a .color-text {
+    margin-top: 1.5em;
+  }
 
   /*--------------------------------------------------------------
   # Footer
@@ -1461,6 +1665,7 @@ footer .footer-copy a {
 
   .main-block-1 .left-side {
     width: 60%;
+    margin-bottom: 1em;
   }
 
   .main-block-1 .right-side {
@@ -1471,6 +1676,10 @@ footer .footer-copy a {
     width: 50%;
     padding: 0 1em;
     box-sizing: border-box;
+  }
+
+  .main-block-2 .right-container {
+    width: 80%;
   }
 
   .main-block-3_news,

@@ -117,8 +117,8 @@ function mycavy_ru_widgets_init() {
 		'name'          => esc_html__( 'Виджет facebook', 'mycavy_ru' ),
 		'id'            => 'f_wiget',
 		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
-		'before_widget' => '<figure>',
-		'after_widget'  => '</figure>',
+		'before_widget' => '<div class="facebook_wiget">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -126,11 +126,20 @@ function mycavy_ru_widgets_init() {
 		'name'          => esc_html__( 'Виджет vk', 'mycavy_ru' ),
 		'id'            => 'vk_wiget',
 		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
-		'before_widget' => '<figure>',
-		'after_widget'  => '</figure>',
+		'before_widget' => '<div class="vk_wiget">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );	
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Кнопка смотреть все', 'mycavy_ru' ),
+		'id'            => 'ads_wiget-btn',
+		'description'   => esc_html__( 'Add widgets here.', 'mycavy_ru' ),
+		'before_widget' => '<div class="ads_wiget-btn">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'mycavy_ru_widgets_init' );
 
